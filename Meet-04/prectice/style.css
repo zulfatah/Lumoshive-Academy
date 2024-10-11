@@ -1,0 +1,52 @@
+body {
+    background-color: #26335d;
+  }
+  
+  .img-cstm {
+     width: 65%;
+     height: 100%;
+  }
+  
+  .icon-size-cstm {
+     font-size: 72px;
+  }
+  
+  .line-sm-cstm {
+     width: 70px;
+     height: 2px;
+     background-color: #E74040;
+  }
+  
+  .line-md-cstm {
+     width: 80px;
+     height: 5px;
+     background-color: #E74040;
+  }
+  
+  .mt-cstm {
+     margin-top: 150px;
+  }
+  
+  .width-cstm {
+     width: 50px; 
+     height: 50px;
+     object-fit: cover; 
+  }
+  
+  .p-cstm {
+     padding: 30px 70px;
+  }
+  
+  .input-height {
+     height: 50px;
+  }
+  
+  .input-text-small {
+     font-size: 16px;
+     font-weight: 600;
+  }
+  
+  .custom-heading {
+     font-size: 20px;
+  }
+  
