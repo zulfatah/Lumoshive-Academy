@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch users from randomuser.me API
     function fetchUsers() {
         showLoader(); // Show loader before fetching data
-        fetch(`https://randomuser.me/api/?results=36`)  // Mendapatkan 36 pengguna secara acak
+        fetch(`https://randomuser.me/api/?results=100`)  // Mendapatkan 36 pengguna secara acak
             .then(response => response.json())
             .then(data => {
                 usersData = data.results;
