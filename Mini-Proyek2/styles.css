@@ -158,6 +158,12 @@ nav ul li a {
     50% { border-color: transparent; }
 }
 
+@media (max-width: 768px) {
+    .typing {
+        width: 300px;
+    }
+}
+
 
 
 /* About Me Section */
