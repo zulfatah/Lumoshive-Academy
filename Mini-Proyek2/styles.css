@@ -568,3 +568,20 @@ footer {
 #backToTop:hover {
     background-color: #e6b800; /* Warna kuning lebih gelap saat di-hover */
 }
+
+/* Social Media Icons in Hero Section */
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 10px;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffcc33; 
+}
