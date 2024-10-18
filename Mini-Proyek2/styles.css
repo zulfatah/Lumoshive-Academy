@@ -159,9 +159,25 @@ nav ul li a {
 }
 
 @media (max-width: 768px) {
-    .typing {
-        width: 300px;
-    }
+    
+.typing {
+    width: 370px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #ffcc33;
+    animation: typing 4s steps(12, end) 1s infinite, cursor .5s steps(12, end) infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 370px; } /* Teks selesai diketik di tengah-tengah animasi */
+    0% { width: 0; }
+    50% { width: 370px; }
+}
+
+@keyframes cursor {
+    50% { border-color: transparent; }
+}
 }
 
 
@@ -534,7 +550,7 @@ footer {
     }
 
     .hero-content h1 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 
     .hero-content p {
