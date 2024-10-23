@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="Soal1.html">Soal 1</a>
+    <a href="Soal2.html">Soal 2</a>
+    <a href="Soal3.html">Soal 3</a>
+    <Script>
+        //SOAL 3
+        // Class Dompet
+        class Dompet {
+            constructor(saldoAwal) {
+                this.saldo = saldoAwal; // Inisialisasi saldo
+            }
+
+            topUp(nominal) {
+                this.saldo += nominal; // Tambah saldo
+            }
+
+            bayar(nominal) {
+                if (nominal <= this.saldo) {
+                    this.saldo -= nominal; // Kurangi saldo jika cukup
+                    return true;
+                } else {
+                    console.log("Saldo tidak cukup untuk melakukan pembayaran.");
+                    return false;
+                }
+            }
+
+            cekSaldo() {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                }).format(this.saldo);
+            }
+        }
+
+        // Class Transaksi (Composition)
+        class Transaksi {
+            constructor(dompet, nominal, jenisTransaksi) {
+                this.dompet = dompet; // Instance Dompet
+                this.nominal = nominal; // Jumlah uang
+                this.jenisTransaksi = jenisTransaksi; // Jenis Transaksi
+                this.tanggalTransaksi = new Date(); // Waktu transaksi
+            }
+
+            infoTransaksi() {
+                return `Pembayaran Rp ${this.nominal} pada ${this.tanggalTransaksi.toLocaleString('id-ID')}`;
+            }
+        }
+
+        // Class DompetPremium (Inheritance)
+        class DompetPremium extends Dompet {
+            constructor(saldoAwal) {
+                super(saldoAwal); // Memanggil constructor Dompet
+            }
+
+            topUp(nominal) {
+                const bonus = nominal * 0.05; // Bonus 5%
+                super.topUp(nominal + bonus); // Tambah saldo dengan bonus
+                console.log(`Bonus Rp ${bonus.toLocaleString('id-ID')} diterima!`);
+            }
+        }
+
+        // Contoh Penggunaan
+        const dompet = new Dompet(500000);
+        console.log(`Saldo saat ini: ${dompet.cekSaldo()}`);
+
+        dompet.topUp(100000);
+        console.log(`Top-up Rp 100000 berhasil!`);
+        console.log(`Saldo saat ini: ${dompet.cekSaldo()}`);
+
+        if (dompet.bayar(200000)) {
+            console.log(`Pembayaran Rp 200000 berhasil!`);
+            console.log(`Saldo saat ini: ${dompet.cekSaldo()}`);
+        }
+
+        const transaksi = new Transaksi(dompet, 200000, "Pembayaran");
+        console.log(transaksi.infoTransaksi());
+
+        console.log("\n"); // Line break
+
+        // Contoh DompetPremium
+        const dompetPremium = new DompetPremium(500000);
+        console.log(`Saldo saat ini: ${dompetPremium.cekSaldo()}`);
+
+        dompetPremium.topUp(100000);
+        console.log(`Top-up Rp 100000 berhasil!`);
+        console.log(`Saldo saat ini: ${dompetPremium.cekSaldo()}`);
+
+        if (dompetPremium.bayar(200000)) {
+            console.log(`Pembayaran Rp 200000 berhasil!`);
+            console.log(`Saldo saat ini: ${dompetPremium.cekSaldo()}`);
+        }
+
+        const transaksiPremium = new Transaksi(dompetPremium, 200000, "Pembayaran");
+        console.log(transaksiPremium.infoTransaksi());
+    </Script>
+</body>
+</html>

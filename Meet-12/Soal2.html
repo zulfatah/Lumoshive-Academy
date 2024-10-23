@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="Soal1.html">Soal 1</a>
+    <a href="Soal2.html">Soal 2</a>
+    <a href="Soal3.html">Soal 3</a>
+    <script>
+        //SOAL 2
+        // Class Barang
+        class Barang {
+            constructor(namaBarang, harga) {
+                this.namaBarang = namaBarang;
+                this.harga = harga;
+            }
+
+            getInfoBarang() {
+                return `${this.namaBarang}: Rp ${this.harga.toLocaleString('id-ID')}`;
+            }
+        }
+
+        // Class Keranjang (Composition)
+        class Keranjang {
+            constructor() {
+                this.daftarBarang = []; // Array untuk menyimpan barang
+            }
+
+            tambahBarang(barang) {
+                this.daftarBarang.push(barang);
+            }
+
+            totalHarga() {
+                return this.daftarBarang.reduce((total, barang) => total + barang.harga, 0);
+            }
+        }
+
+        // Class Membership
+        class Membership {
+            constructor(namaMember, tipeMembership) {
+                this.namaMember = namaMember;
+                this.tipeMembership = tipeMembership;
+            }
+
+            diskonMember() {
+                switch (this.tipeMembership) {
+                    case 'Gold':
+                        return 0.20; // 20%
+                    case 'Silver':
+                        return 0.10; // 10%
+                    case 'Bronze':
+                        return 0.05; // 5%
+                    default:
+                        return 0;
+                }
+            }
+        }
+
+        // Class Transaksi
+        class Transaksi {
+            constructor(keranjang, member) {
+                this.keranjang = keranjang;
+                this.member = member;
+            }
+
+            hitungTotalAkhir() {
+                const total = this.keranjang.totalHarga();
+                const diskon = total * this.member.diskonMember();
+                const totalAkhir = total - diskon;
+                return totalAkhir;
+            }
+
+            formatUang(angka) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                }).format(angka);
+            }
+        }
+
+        // Contoh Penggunaan
+        const barang1 = new Barang("Sepatu", 500000);
+        const barang2 = new Barang("Tas", 300000);
+
+        const keranjang = new Keranjang();
+        keranjang.tambahBarang(barang1);
+        keranjang.tambahBarang(barang2);
+
+        const member = new Membership("Budi", "Gold");
+
+        const transaksi = new Transaksi(keranjang, member);
+
+        // Output
+        console.log(`Member: ${transaksi.member.namaMember} (${transaksi.member.tipeMembership})`);
+        console.log(`Daftar Barang:`);
+        keranjang.daftarBarang.forEach(barang => console.log(barang.getInfoBarang()));
+        console.log(`Total Akhir: ${transaksi.formatUang(transaksi.hitungTotalAkhir())}`);
+    </script>
+</body>
+</html>

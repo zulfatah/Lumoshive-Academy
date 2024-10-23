@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktek</title>
+</head>
+
+<body>
+    <a href="Soal1.html">Soal 1</a>
+    <a href="Soal2.html">Soal 2</a>
+    <a href="Soal3.html">Soal 3</a>
+    <script>
+        //Soal 1
+        // Class Utama
+        class Kendaraan {
+            constructor(merek, model, tahun) {
+                this.merek = merek;
+                this.model = model;
+                this.tahun = tahun;
+            }
+
+            infoKendaraan() {
+                return `Kendaraan: ${this.merek} ${this.model}, Tahun: ${this.tahun}`;
+            }
+        }
+
+        // Class Turunan: Mobil
+        class Mobil extends Kendaraan {
+            constructor(merek, model, tahun, kapasitasPenumpang, mesin) {
+                super(merek, model, tahun);
+                this.kapasitasPenumpang = kapasitasPenumpang;
+                this.mesin = mesin; // Komposisi
+            }
+
+            infoKendaraan() {
+                return `${super.infoKendaraan()}, Kapasitas Penumpang: ${this.kapasitasPenumpang}, Jenis Mesin: ${this.mesin.jenis}, Tenaga: ${this.mesin.tenagaKuda}`;
+            }
+        }
+
+        // Class Turunan: Motor
+        class Motor extends Kendaraan {
+            constructor(merek, model, tahun, jenisMotor, mesin) {
+                super(merek, model, tahun);
+                this.jenisMotor = jenisMotor;
+                this.mesin = mesin; // Komposisi
+            }
+
+            infoKendaraan() {
+                return `${super.infoKendaraan()}, Jenis Motor: ${this.jenisMotor}, Jenis Mesin: ${this.mesin.jenis}, Tenaga: ${this.mesin.tenagaKuda}`;
+            }
+        }
+
+        // Class Mesin
+        class Mesin {
+            constructor(jenis, tenagaKuda) {
+                this.jenis = jenis;
+                this.tenagaKuda = tenagaKuda;
+            }
+        }
+
+        // Class Membership
+        class Membership {
+            constructor(namaMember, tipeMembership) {
+                this.namaMember = namaMember;
+                this.tipeMembership = tipeMembership;
+            }
+
+            diskonMember() {
+                switch (this.tipeMembership) {
+                    case 'Gold':
+                        return 0.15; // 15%
+                    case 'Silver':
+                        return 0.10; // 10%
+                    case 'Bronze':
+                        return 0.05; // 5%
+                    default:
+                        return 0;
+                }
+            }
+        }
+
+        // Class Rental
+        class Rental {
+            constructor(kendaraan, member, tanggalRental, lamaHari) {
+                this.kendaraan = kendaraan;
+                this.member = member;
+                this.tanggalRental = tanggalRental;
+                this.lamaHari = lamaHari;
+            }
+
+            hitungTotal() {
+                let tarifHarian = this.kendaraan instanceof Mobil ? 100000 : 50000;
+                let totalHarga = tarifHarian * this.lamaHari;
+                let diskon = this.member.diskonMember();
+                totalHarga -= totalHarga * diskon;
+                return totalHarga;
+            }
+        }
+
+        // Contoh Penggunaan
+        const mesinMobil = new Mesin("Bensin", "120 HP");
+        const mobil = new Mobil("Toyota", "Avanza", 2021, 7, mesinMobil);
+
+        const mesinMotor = new Mesin("Bensin", "100 HP");
+        const motor = new Motor("Yamaha", "NMax", 2020, "Skuter", mesinMotor);
+
+        const member = new Membership("Siti", "Silver");
+        const tanggalRental = new Date(); 
+
+        const rentalMobil = new Rental(mobil, member, tanggalRental, 3);
+        const rentalMotor = new Rental(motor, member, tanggalRental, 3);
+
+        // Output
+        console.log(rentalMobil.kendaraan.infoKendaraan());
+        console.log(`Member: ${rentalMobil.member.namaMember} (${rentalMobil.member.tipeMembership})`);
+        console.log(`Tanggal Rental: ${rentalMobil.tanggalRental.toLocaleDateString('id-ID')}`);
+        console.log(`Lama Rental: ${rentalMobil.lamaHari} hari`);
+        console.log(`Total Harga: Rp ${rentalMobil.hitungTotal()}`);
+
+        console.log("\n"); // Line break
+
+        console.log(rentalMotor.kendaraan.infoKendaraan());
+        console.log(`Member: ${rentalMotor.member.namaMember} (${rentalMotor.member.tipeMembership})`);
+        console.log(`Tanggal Rental: ${rentalMotor.tanggalRental.toLocaleDateString('id-ID')}`);
+        console.log(`Lama Rental: ${rentalMotor.lamaHari} hari`);
+        console.log(`Total Harga: Rp ${rentalMotor.hitungTotal()}`);
+
+
+    </script>
+</body>
+
+</html>
