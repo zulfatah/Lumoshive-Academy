@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useTimer from "../hooks/useTimer"; 
 
 const ActivityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [activity, setActivity] = useState(null);
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const timerRef = useRef(null); // Menggunakan useRef untuk menyimpan ID timer
+  const { time, startTimer, stopTimer, resetTimer } = useTimer(); // menggunakan custom hook useTimer
 
   useEffect(() => {
     // Fetch data aktivitas berdasarkan id
@@ -16,27 +15,6 @@ const ActivityDetail = () => {
       .then((data) => setActivity(data))
       .catch((error) => console.error("Error fetching activity:", error));
   }, [id]);
-
-  useEffect(() => {
-    if (isRunning) {
-      timerRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000);
-    } else if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-
-    // Membersihkan interval saat komponen di-unmount
-    return () => clearInterval(timerRef.current);
-  }, [isRunning]);
-
-  const startTimer = () => setIsRunning(true);
-  const stopTimer = () => setIsRunning(false);
-  const resetTimer = () => {
-    setIsRunning(false);
-    setTime(0);
-  };
 
   if (!activity) {
     return <p>Loading...</p>;
