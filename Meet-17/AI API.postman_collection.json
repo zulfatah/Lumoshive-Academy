@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "f05c8b25-d97a-4557-9279-4706eef77620",
+		"name": "AI API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37511972"
+	},
+	"item": [
+		{
+			"name": "AI API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test to check the response for correctness and validity\r",
+							"pm.test(\"Response has valid status and status_code properties\", function () {\r",
+							"  var responseData = pm.response.json();\r",
+							"  pm.expect(responseData).to.have.property('status').that.is.a('string');\r",
+							"  pm.expect(responseData).to.have.property('status_code').that.is.a('number');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbnljb2RlIiwiaWF0IjoxNzMwMzMyNDY1LCJleHAiOjE3MzAzMzYwNjV9.G_YP2vYZBwILNrojMvouvaf96hSGeddM81_oKU6qUYE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "RJS1-202401",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"kapan indonesia merdeka?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lumoshive-academy-ai-api.vercel.app/query",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-ai-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"query"
+					]
+				},
+				"description": "### POST /query\n\nThis endpoint is used to make a query to the Lumoshive Academy AI API.\n\n#### Request\n\n- { \"query\": \"\" }\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"status\": \"success\",\n    \"status_code\": 200,\n    \"data\": \"React JS adalah sebuah library JavaScript yang populer untuk membangun antarmuka pengguna (UI) yang interaktif dan dinamis. \\n\\n**Berikut adalah penjelasan singkat tentang React JS:**\\n\\n* **Deklaratif:** React menggunakan pendekatan deklaratif untuk membangun UI. Anda menggambarkan bagaimana UI harus terlihat, dan React akan mengurus pembaruan secara otomatis.\\n* **Komponen:** React membagi UI menjadi komponen-komponen kecil yang dapat digunakan kembali. Setiap komponen adalah bagian independen dari UI yang memiliki tugas dan logika tersendiri.\\n* **Virtual DOM:** React menggunakan Virtual DOM untuk meningkatkan kinerja. Virtual DOM adalah representasi UI dalam memori yang diubah terlebih dahulu sebelum perubahan diterapkan ke DOM nyata, sehingga mengurangi jumlah operasi yang dilakukan pada browser.\\n* **JSX:** React menggunakan JSX, sebuah ekstensi sintaks JavaScript yang memungkinkan Anda menulis HTML di dalam kode JavaScript. JSX membuat kode lebih mudah dibaca dan ditulis.\\n* **One-way data binding:** React menggunakan one-way data binding, yang berarti data mengalir searah dari komponen induk ke komponen anak. Ini membantu menjaga konsistensi data dan memudahkan debugging.\\n* **State & Props:** Komponen React memiliki state (data internal) dan props (data yang diteruskan dari komponen induk). \\n* **Hooks:**  Fitur yang memungkinkan Anda menggunakan state dan siklus hidup komponen di dalam fungsi komponen fungsional, tanpa memerlukan kelas. \\n\\n**Keuntungan menggunakan React JS:**\\n\\n* **Kinerja yang baik:** Virtual DOM dan pendekatan deklaratif meningkatkan kinerja aplikasi.\\n* **Kemudahan penggunaan:** React mudah dipelajari dan digunakan, terutama bagi pengembang JavaScript.\\n* **Penggunaan kembali komponen:** Komponen dapat digunakan kembali di seluruh aplikasi, sehingga mempercepat pengembangan.\\n* **Dukungan komunitas yang kuat:** React memiliki komunitas yang besar dan aktif yang menyediakan banyak sumber daya dan dukungan.\\n* **Serbaguna:** React dapat digunakan untuk membangun berbagai aplikasi web, termasuk aplikasi web single-page (SPA), aplikasi web mobile, dan aplikasi desktop.\\n\\n**Contoh sederhana menggunakan React JS:**\\n\\n```jsx\\nimport React from &#x27;react&#x27;;\\nimport ReactDOM from &#x27;react-dom/client&#x27;;\\n\\nfunction Welcome(props) {\\n  return <h1 class=&#x27;preserveHtml&#x27; class=&#x27;preserveHtml&#x27;>Halo, {props.name}</h1>;\\n}\\n\\nconst root = ReactDOM.createRoot(document.getElementById(&#x27;root&#x27;));\\nroot.render(<Welcome name=\\\"Dunia\\\" />);\\n```\\n\\nKode ini akan menampilkan \\\"Halo, Dunia\\\" di dalam tag `h1` di halaman web.\\n\\n**Kesimpulan:**\\n\\nReact JS adalah library JavaScript yang populer dan powerful untuk membangun UI yang dinamis dan interaktif. Keuntungannya meliputi kinerja yang baik, kemudahan penggunaan, dan penggunaan kembali komponen. \\n\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "RJS1-202401",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"denycode\",\r\n    \"password\": \"12341234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lumoshive-academy-ai-api.vercel.app/register",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-ai-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "RJS1-202401",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"denycode\",\r\n    \"password\": \"12341234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lumoshive-academy-ai-api.vercel.app/login",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-ai-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlbnljb2RlIiwiaWF0IjoxNzMwMTk1NTM0LCJleHAiOjE3MzAxOTkxMzR9.qxVoSSGN7e7MtO2kQ9ZgwXX1_Hs7vs9CdFwD_QJxbcs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://lumoshive-academy-ai-api.vercel.app/logout",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-ai-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

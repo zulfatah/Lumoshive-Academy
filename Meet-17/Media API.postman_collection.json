@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "5ce9f651-eb50-4861-a874-fa4c7aeb75d2",
+		"name": "Media API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37511972"
+	},
+	"item": [
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lumoshive-academy-media-api.vercel.app/api/games?page=5&search",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-media-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"games"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "5"
+						},
+						{
+							"key": "search",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lumoshive-academy-media-api.vercel.app/api/detail/2024/07/15/ingin-saingi-game-rivalnya-dota-2-hadirkan-mode-fighting-game",
+					"protocol": "https",
+					"host": [
+						"lumoshive-academy-media-api",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"detail",
+						"2024",
+						"07",
+						"15",
+						"ingin-saingi-game-rivalnya-dota-2-hadirkan-mode-fighting-game"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
